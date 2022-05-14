@@ -4,10 +4,15 @@
 #include <conio.h>
 #include "clientes.h"
 
+int verifica_id_cliente_cpf(int i, int *aux);
+
 int main(){
 
-    int opcao, id_cliente;
-    char nome [50], endereco [100], telefone [11], data_cadastro [9], cpf [11], cnpj [14];
+    int opcao, i, aux_id_cpf[100];
+
+    //zerando vetor
+    for (int i=0; i <= 100; i++)
+        aux_id_cpf[i] = 0;
 
     printf("Padaria Sr. Manoel");
     printf("\nSelecione uma opcao abaixo:");
@@ -32,65 +37,39 @@ int main(){
             switch (opcao){
 
                 case 1:
+                    //verificar id do cliente
+                    do{
+                        printf("Digite um id para cadastrar o cliente: ");
+                        scanf("%i", &i);
+                        if (verifica_id_cliente_cpf(i, aux_id_cpf) == 1){
+                            add_cliente_cpf(i);
+                            printf("\n\nCLIENTE CADASTRADO COM SUCESSO\n\n");
+                            main();     
+                        }                       
+                        else{
+                            printf("\nID NAO DISPONIVEL");
+                        }
+                    }while (verifica_id_cliente_cpf(i, aux_id_cpf) != 1);
+                                         
+                    
 
-                    printf("Digite o nome do cliente: ");
-                        scanf("%s", nome); 
-                    printf("\nDigite o endereco do cliente: ");
-                        scanf("%s", endereco);
-                    printf("\nDigite o telefone do cliente: ");
-                        scanf("%s", telefone);
-                    printf("\nDigite a data do cadastro do cliente: ");
-                        scanf("%s", data_cadastro);
-                    printf("\nDigite o cpf do cliente: ");
-                        scanf("%s", cpf); 
-                    printf("\nDigite um id para o cliente: ");
-                        scanf("%i", &id_cliente);
-
-                    criar_cliente(id_cliente, nome);
-
+                
                 break;
             }
-
         break;
     }
 //free variaveis
 
+    
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+int verifica_id_cliente_cpf(int i, int *aux){
+    int j;
+    
+    for (int i=0; i <= 100; i++)
+        if(aux[i] == i)
+            return 1;
+        else
+            return 0;
+}
 
