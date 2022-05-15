@@ -2,14 +2,22 @@
 #include <stdlib.h>
 #include <string.h>
 #include <conio.h>
+#include <ctype.h>
 #include "clientes.h"
 #include "clientes_cnpj.h"
+#include "fornecedor.h"
+#include "produto.h"
+#include "vendas_avista.h"
+#include "vendas_fiado.h"
 
-int verifica_id_cliente_cpf(int i, int *aux);
+int verifica_id_cliente_cpf(int j);
+int verifica_id_cliente_cnpj(int j);
+int verifica_id_fornecedor(int j);
+void relatorios_apagar();
 
 int main(){
 
-    int opcao, i, aux_id_cpf[100], aux_id_cnpj[100];
+    int opcao, i, id, aux_id_cpf[100], aux_id_cnpj[100], id_venda_atual = 0;
 
     //zerando vetor
     for (int i=0; i <= 100; i++){
@@ -22,14 +30,13 @@ int main(){
     printf("\n(1) - Cadastro de clientes");
     printf("\n(2) - Cadastro de produtos");
     printf("\n(3) - Cadastro de fornecedor");
-    printf("\n(4) - Inserir contas a pagar");
-    printf("\n(5) - Venda a vista");
-    printf("\n(6) - Venda fiado");
-    printf("\n(7) - Relatorios");
-    printf("\n(8) - Sair\n");
+    printf("\n(4) - Registro de compras");
+    printf("\n(5) - Registro de vendas");
+    printf("\n(6) - Relatorios");
+    printf("\n(9) - Sair\n");
 
+    scanf(stdin);
     scanf("%i", &opcao);
-
     switch (opcao){
 
         case 1:
@@ -43,48 +50,154 @@ int main(){
                     //verificar id do cliente
                     do{
                         printf("Digite um id para cadastrar o cliente: ");
-                        scanf("%i", &i);
-                        if (verifica_id_cliente_cpf(i, aux_id_cpf) == 1){
-                            add_cliente_cpf(i);
-                            printf("\n\nCLIENTE CADASTRADO COM SUCESSO\n\n");
-                            aux_id_cpf[i] = i;
+                        scanf("%i", &id);
+                        if (verifica_id_cliente_cpf(id) == 1){
+                            add_cliente_cpf(id);
                             main();     
                         }                       
                         else{
-                            printf("\nID NAO DISPONIVEL");
+                            printf("\n\nID NAO DISPONIVEL\n\n");
                         }
-                    }while (verifica_id_cliente_cpf(i, aux_id_cpf) != 1);                        
+                    }while (verifica_id_cliente_cpf(id) == 0);                        
                 break;
 
                 case 2:
-                    do{
-                        printf("Digite um id para cadastrar o cliente: ");
-                        scanf("%i", &i);
-                        if (verifica_id_cliente_cnpj(i, aux_id_cnpj) == 1){
-                            add_cliente_cnpj(i);
-                            printf("\n\nCLIENTE CADASTRADO COM SUCESSO\n\n");
-                            aux_id_cnpj[i] = i;
-                            main();     
-                        }                       
-                        else{
-                            printf("\nID NAO DISPONIVEL");
-                        }
-                    }while (verifica_id_cliente_cnpj(i, aux_id_cnpj) != 1);
-                break;
+            do{
+                    printf("\nDigite um id para cadastrar o cliente: ");
+                    scanf("%i", &id);
+                    if (verifica_id_cliente_cnpj(id) == 1){
+                        add_cliente_cnpj(id);
+                        main();     
+                    }                       
+                    else{
+                        printf("\nID NAO DISPONIVEL\n");
+                    }
+                }while (verifica_id_cliente_cnpj(id) == 0);
+
+                default:
+                    printf("\nOpcao invalida\n");
+                    main();
+                    break;
+        break;
+
             }
         break;
+
+        case 2:
+                do{
+                    printf("\nDigite um id para cadastrar o produto: ");
+                    scanf("%i", &id);
+                    if (verifica_id_produto(id) == 1){
+                        add_produto(id);
+                        main();     
+                    }                       
+                    else{
+                        printf("\nID NAO DISPONIVEL\n");
+                    }
+                }while (verifica_id_produto(id) == 0);
+            break;
+
+        case 3:
+            do{
+                printf("\nDigite um id para cadastrar o fornecedor: ");
+                scanf("%i", &id);
+                if (verifica_id_fornecedor(id) == 1){
+                    add_fornecedor(id);
+                    printf("\n\nFornecedor CADASTRADO COM SUCESSO\n\n");
+                    main();     
+                }                       
+                else{
+                    printf("\nID NAO DISPONIVEL\n");
+                }
+            }while (verifica_id_fornecedor(id) == 0);
+        break;
+
+        case 4:
+            printf("\nForma de pagamento fiado?");
+            printf("(1) - Sim");
+            printf("(2) - Nao");
+                switch (opcao)
+                {
+                case 1:
+                    add_vendas_avista(id_venda_atual);
+                    id_venda_atual++
+                    break;
+                case 2:
+                    break;
+                default:
+                    printf("Opcao invalida");
+                    main();
+                    break;
+                }
+                do{
+                    printf("\nDigite um id para cadastrar o fornecedor: ");
+                    scanf("%i", &id);
+                    if (verifica_id_fornecedor(id) == 1){
+                        add_fornecedor(id);
+                        printf("\n\nFornecedor CADASTRADO COM SUCESSO\n\n");
+                        main();     
+                    }                       
+                    else{
+                        printf("\nID NAO DISPONIVEL\n");
+                    }
+                }while (verifica_id_fornecedor(id) == 0);
+        break;
+
+        case 6:
+            relatorios_apagar();
+        break;
+
+        case 9:
+            exit(1);
+        break;
+
+        default:
+            main();
+        break;      
     }
 //free variaveis
 
     
 }
 
-int verifica_id_cliente_cpf(int i, int *aux){
-    int j;
+int verifica_id_cliente_cpf(int j){
+
+    if(id_cpf[j].vazio == 0)
+        return 1;
+    return 0;
+}
+
+int verifica_id_cliente_cnpj(int j){
+
+    if(id_cnpj[j].vazio == 0)
+        return 1;
+    return 0;
+}
+
+int verifica_id_fornecedor(int j){
+
+    if(id_fornecedor[j].vazio == 0)
+        return 1;
+    return 0;
+}
+
+int verifica_id_produto(int j){
+
+    if(id_cpf[j].vazio == 0)
+        return 1;
+    return 0;
+}
+
+void relatorios_apagar(){
+    FILE *file = fopen("apagar.csv", "w");
+
+    fputs("id;nome", file);
     
-    for (int i=0; i <= 100; i++)
-        if(aux[i] == i)
-            return 1;
-        else
-            return 0;
+    for(int i = 0; i <= 100; i++){
+        if(id_cpf[i].vazio == 1){
+            fprintf(file, "\n""%i"";""%s", id_cpf[i].id_cliente, id_cpf[i].nome);
+        }
+    }
+fclose(file);
+main();
 }

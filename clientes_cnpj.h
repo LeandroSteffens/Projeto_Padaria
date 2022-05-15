@@ -5,7 +5,7 @@
 
 struct cliente_cnpj {
 
-    int id_cliente;
+    int id_cliente, vazio, saldo;
     char nome [50], endereco [100], telefone [11], data_cadastro [9], cnpj [15], ins_est[11];
     
 } id_cnpj[100];
@@ -14,16 +14,17 @@ struct cliente_cnpj {
 int add_cliente_cnpj(int id){
     //recebendo dados do cliente
     id_cnpj[id].id_cliente = id;
+    id_cnpj[id].vazio = 1;
     printf("\nDigite o nome do cliente: ");
-        scanf("%s", id_cnpj->nome); 
+        scanf("%s", id_cnpj[id].nome); 
     printf("\nDigite o endereco do cliente: ");
-        scanf("%s", id_cnpj->endereco);
+        scanf("%s", id_cnpj[id].endereco);
     printf("\nDigite o telefone do cliente: ");
-        scanf("%s", id_cnpj->telefone);
+        scanf("%s", id_cnpj[id].telefone);
     printf("\nDigite a data do cadastro do cliente: ");
-        scanf("%s", id_cnpj->data_cadastro);
+        scanf("%s", id_cnpj[id].data_cadastro);
     printf("\nDigite o cnpj do cliente: ");
-        scanf("%s", id_cnpj->cnpj);
+        scanf("%s", id_cnpj[id].cnpj);
     printf("\nDigite a inscricao estadual: ");
-        scanf("%s", id_cnpj->ins_est); 
+        scanf("%s", id_cnpj[id].ins_est); 
 }
