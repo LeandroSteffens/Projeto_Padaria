@@ -3,16 +3,19 @@
 #include <string.h>
 #include <conio.h>
 #include "clientes.h"
+#include "clientes_cnpj.h"
 
 int verifica_id_cliente_cpf(int i, int *aux);
 
 int main(){
 
-    int opcao, i, aux_id_cpf[100];
+    int opcao, i, aux_id_cpf[100], aux_id_cnpj[100];
 
     //zerando vetor
-    for (int i=0; i <= 100; i++)
+    for (int i=0; i <= 100; i++){
         aux_id_cpf[i] = 0;
+        aux_id_cnpj[i] = 0;
+    }
 
     printf("Padaria Sr. Manoel");
     printf("\nSelecione uma opcao abaixo:");
@@ -44,16 +47,29 @@ int main(){
                         if (verifica_id_cliente_cpf(i, aux_id_cpf) == 1){
                             add_cliente_cpf(i);
                             printf("\n\nCLIENTE CADASTRADO COM SUCESSO\n\n");
+                            aux_id_cpf[i] = i;
                             main();     
                         }                       
                         else{
                             printf("\nID NAO DISPONIVEL");
                         }
-                    }while (verifica_id_cliente_cpf(i, aux_id_cpf) != 1);
-                                         
-                    
+                    }while (verifica_id_cliente_cpf(i, aux_id_cpf) != 1);                        
+                break;
 
-                
+                case 2:
+                    do{
+                        printf("Digite um id para cadastrar o cliente: ");
+                        scanf("%i", &i);
+                        if (verifica_id_cliente_cnpj(i, aux_id_cnpj) == 1){
+                            add_cliente_cnpj(i);
+                            printf("\n\nCLIENTE CADASTRADO COM SUCESSO\n\n");
+                            aux_id_cnpj[i] = i;
+                            main();     
+                        }                       
+                        else{
+                            printf("\nID NAO DISPONIVEL");
+                        }
+                    }while (verifica_id_cliente_cnpj(i, aux_id_cnpj) != 1);
                 break;
             }
         break;
@@ -72,4 +88,3 @@ int verifica_id_cliente_cpf(int i, int *aux){
         else
             return 0;
 }
-
