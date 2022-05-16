@@ -1,8 +1,0 @@
-cadastro
-	- cliente
-	- produto
-	- fornecedor
-
-contas a pagar e a receber
-relatorios
-
