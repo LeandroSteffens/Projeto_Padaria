@@ -20,7 +20,7 @@ int main(){
 
     int opcao, i, id, aux_id_cpf[100], aux_id_cnpj[100], id_venda_atual = 0;
 
-    //cadastro_auto();
+    cadastro_auto();
 
     //zerando vetor
     for (int i=0; i <= 100; i++){
@@ -206,7 +206,7 @@ void relatorios_apagar(){
     }
 fclose(file);
 main();
-
+}
 
 void cadastro_auto(){
 
@@ -215,7 +215,8 @@ void cadastro_auto(){
 
     id_cpf[aux].id = aux;
     id_cpf[aux].vazio = 1;
-    id_cpf[aux].nome[20] = "Cesar Filho";
+    id_cpf[aux].nome[50] = "Cesar";
+    printf("%s", id_cpf[aux].nome);
     id_cpf[aux].endereco[10] = "ufmt";
     id_cpf[aux].telefone[10] = "6599999999";
     id_cpf[aux].data_cadastro[10] = "16/05/2022";
@@ -225,11 +226,16 @@ void cadastro_auto(){
 
     id_cpf[aux].id = aux;
     id_cpf[aux].vazio = 1;
-    id_cpf[aux].nome[20] = "Leo Steffens";
+    id_cpf[aux].nome[50] = "Leo Steffens";
     id_cpf[aux].endereco[20] = "ufmt2";
     id_cpf[aux].telefone[20] = "6599999889";
     id_cpf[aux].data_cadastro[20] = "16/04/2022";
     id_cpf[aux].cpf[20] = "00688888899";
 
+    //testando cadastro
+    for (int i=0; i <=100; i++){
+              if (id_cpf[i].vazio == 1)
+                    printf("ID: %i - %s\n", id_cpf[i].id, id_cpf[i].nome);
+    }
 }
-}
+
