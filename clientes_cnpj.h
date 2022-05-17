@@ -5,7 +5,8 @@
 
 struct cliente_cnpj {
 
-    int id, vazio, saldo;
+    int id, vazio;
+    float saldo;
     char nome [50], endereco [100], telefone [11], data_cadastro [9], cnpj [15], ins_est[11];
 
 } id_cnpj[100];

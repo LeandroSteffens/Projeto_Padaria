@@ -16,7 +16,7 @@ int add_vendas_fiado(int id){
     //recebendo dados do vendas_fiado
     id_vendas_fiado[id].id = id;
     id_vendas_fiado[id].vazio = 1;
-    strcpy(id_vendas_fiado[id].forma_pagamento, "Fiado";
+    strcpy(id_vendas_fiado[id].forma_pagamento, "Fiado");
 
     //registrando o cliente fiado
     do{

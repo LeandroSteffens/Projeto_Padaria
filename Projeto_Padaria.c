@@ -9,18 +9,17 @@
 #include "produto.h"
 #include "vendas_avista.h"
 #include "vendas_fiado.h"
+#include "cadastro_auto.h"
 
 int verifica_id_cliente_cpf(int j);
 int verifica_id_cliente_cnpj(int j);
 int verifica_id_fornecedor(int j);
 void relatorios_apagar();
-void cadastro_auto();
+
 
 int main(){
 
     int opcao, i, id, aux_id_cpf[100], aux_id_cnpj[100], id_venda_atual = 0;
-
-    cadastro_auto();
 
     //zerando vetor
     for (int i=0; i <= 100; i++){
@@ -37,6 +36,7 @@ int main(){
     printf("\n(4) - Registro de vendas");
     printf("\n(5) - Registro de compras");
     printf("\n(6) - Relatorios");
+    printf("\n(8) - Cadastros automaticos");
     printf("\n(9) - Sair\n");
 
     scanf("%i", &opcao);
@@ -144,6 +144,11 @@ int main(){
             main();
         break;
 
+        case 8:
+            cadastros();
+            main();
+        break;
+
         case 9:
             exit(1);
         break;
@@ -198,39 +203,4 @@ void relatorios_apagar(){
 fclose(file);
 }
 
-void cadastro_auto(){
-
-    //clientes
-    int aux = 1;
-
-    id_cpf[aux].id = aux;
-    id_cpf[aux].vazio = 1;
-    strcpy(id_cpf[aux].nome, "Cesar Filho");
-    strcpy(id_cpf[aux].endereco, "ufmt");
-    strcpy(id_cpf[aux].telefone, "6599999999");
-    strcpy(id_cpf[aux].data_cadastro, "16/05/2022");
-    strcpy(id_cpf[aux].cpf, "00688888888");
-
-    aux++;
-
-    id_cpf[aux].id = aux;
-    id_cpf[aux].vazio = 1;
-    strcpy(id_cpf[aux].nome, "Leo Steffens");
-    strcpy(id_cpf[aux].endereco, "ufmt2");
-    strcpy(id_cpf[aux].telefone, "6599999889");
-    strcpy(id_cpf[aux].data_cadastro, "16/04/2022");
-    strcpy(id_cpf[aux].cpf, "00688888899");
-
-    //produtos
-    aux = 1;
-    id_produto[aux].id = aux;
-    id_produto[aux].vazio = 1;
-    strcpy(id_produto[aux].descricao, "pao frances");
-    id_produto[aux].estoque_min = 2;
-    id_produto[aux].qnt_estoque = 5;
-    id_produto[aux].valor_custo = 1.5;
-    id_produto[aux].lucro = 50;
-    id_produto[aux].valor_venda = id_produto[aux].valor_custo + id_produto[aux].valor_custo * (id_produto[aux].lucro/100);
-
-}
 
