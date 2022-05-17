@@ -193,7 +193,7 @@ int verifica_id_produto(int j){
 void relatorios_apagar(){
     FILE *file = fopen("apagar.csv", "w");
 
-    fputs("nome;tipo do cliente;cpf/cnpj;telefone;data de cadastro;valor total a receber", file);
+    fputs("Nome;Tipo do cliente;CPF/CNPJ;Telefone;Data de cadastro;Valor total a receber", file);
 
     for(int i = 0; i <= 100; i++){
         if(id_cpf[i].vazio == 1){
@@ -202,5 +202,3 @@ void relatorios_apagar(){
     }
 fclose(file);
 }
-
-

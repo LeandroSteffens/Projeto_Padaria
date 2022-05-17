@@ -1,8 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <conio.h>
-
 struct vendas_fiado {
 
     int id, id_produto_vendido, vazio, qnt_vendida, id_cliente_venda_fiado, cliente_cpf_ou_cnpj;

@@ -1,3 +1,11 @@
-nome;tipo do cliente;cpf/cnpj;telefone;data de cadastro;valor total a receber
-Cesar Filho;cpf;00688888888;6599999999;16/05/202200688888888;2.25
+Nome;Tipo do cliente;CPF/CNPJ;Telefone;Data de cadastro;Valor total a receber
+Cesar Filho;cpf;;6599999999;16/05/2022;0.00
 Leo Steffens;cpf;00688888899;6599999889;16/04/202200688888899;0.00
+Messi;cpf;;6599999999;16/05/2022;0.00
+Cristiano Ronaldo;cpf;;6599999999;16/05/2022;0.00
+Neymar;cpf;;6599999999;16/05/2022;0.00
+Ronaldinho;cpf;;6599999999;16/05/2022;0.00
+Pele;cpf;;6599999999;16/05/2022;0.00
+Maradona;cpf;;6599999999;16/05/2022;0.00
+Marilia Mendoca;cpf;;6599999999;16/05/2022;0.00
+Cristiano Araujo;cpf;;6599999999;16/05/2022;0.00
