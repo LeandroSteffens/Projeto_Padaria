@@ -7,7 +7,7 @@ struct vendas_avista {
 
     int id, id_produto_vendido, vazio, qnt_vendida;
     float valor_venda;
-    char data_venda [10], forma_pagamento[30];
+    char data_venda [10], forma_pagamento[20];
 
 }id_vendas_avista[200];
 
@@ -26,15 +26,15 @@ int add_vendas_avista(int id){
 
         switch (opcao)
         {
-        case 1: id_vendas_avista[id].forma_pagamento[30] = "Dinheiro";
+        case 1: strcpy(id_vendas_avista[id].forma_pagamento, "Dinheiro");
             break;
-        case 2: id_vendas_avista[id].forma_pagamento[30] = "Cheque";
+        case 2: strcpy(id_vendas_avista[id].forma_pagamento, "Cheque");
             break;
-        case 3: id_vendas_avista[id].forma_pagamento[30] = "Cartao de debito";
+        case 3: strcpy(id_vendas_avista[id].forma_pagamento, "Cartao de debito");
             break;
-        case 4: id_vendas_avista[id].forma_pagamento[30] = "Cartao de credito";
+        case 4: strcpy(id_vendas_avista[id].forma_pagamento, "Cartao de credito");
             break;
-        case 5: id_vendas_avista[id].forma_pagamento[30] = "Ticket alimentacao";
+        case 5: strcpy(id_vendas_avista[id].forma_pagamento, "Ticket alimentacao");
             break;
         default:
             printf("\nOpcao invalida\n");

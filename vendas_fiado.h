@@ -16,7 +16,7 @@ int add_vendas_fiado(int id){
     //recebendo dados do vendas_fiado
     id_vendas_fiado[id].id = id;
     id_vendas_fiado[id].vazio = 1;
-    id_vendas_fiado[id].forma_pagamento[8] = "Fiado";
+    strcpy(id_vendas_fiado[id].forma_pagamento, "Fiado";
 
     //registrando o cliente fiado
     do{
@@ -43,14 +43,14 @@ int add_vendas_fiado(int id){
     printf("\nPRODUTOS CADASTRADOS\n");
     for(int i = 0; i <= 100; i++)
         if(id_produto[i].vazio == 1 && id_produto[i].qnt_estoque >= 1)
-            printf("ID: %i - %s Valor = RS %.2f\n", id_produto[i].id, id_produto[i].descricao, id_produto[i].valor_venda);
+            printf("ID: %i - %s - Valor = RS %.2f - Estoque: %i\n", id_produto[i].id, id_produto[i].descricao, id_produto[i].valor_venda, id_produto[i].qnt_estoque);
 
     do{
         printf("\nDigite o codigo do produto: ");
             scanf("%i", &id_vendas_fiado[id].id_produto_vendido);
         printf("\nDigite quantidade do produto: ");
             scanf("%i", &id_vendas_fiado[id].qnt_vendida);
-    } while (id_produto[id_vendas_fiado[id].id_produto_vendido].qnt_estoque <= id_vendas_fiado[id].qnt_vendida);
+    } while (id_produto[id_vendas_fiado[id].id_produto_vendido].qnt_estoque < id_vendas_fiado[id].qnt_vendida);
 
     //valor da venda
     id_vendas_fiado[id].valor_venda =  id_produto[id_vendas_fiado[id].id_produto_vendido].valor_venda * id_vendas_fiado[id].qnt_vendida;
@@ -59,5 +59,14 @@ int add_vendas_fiado(int id){
 
     printf("\nDigite a data da venda: ");
         scanf("%s", id_vendas_avista[id].data_venda);
+
+    //lancando despesa para o cliente
+    if (id_vendas_fiado[id].cliente_cpf_ou_cnpj == 1)
+        id_cpf[id_vendas_fiado[id].id_cliente_venda_fiado].saldo += id_vendas_fiado[id].valor_venda;
+    else
+        id_cnpj[id_vendas_fiado[id].id_cliente_venda_fiado].saldo += id_vendas_fiado[id].valor_venda;
+
+    //atualizando estoque
+    id_produto[id_vendas_fiado[id].id_produto_vendido].qnt_estoque -= id_vendas_fiado[id].qnt_vendida;
 }
 

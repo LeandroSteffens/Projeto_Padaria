@@ -5,7 +5,7 @@
 
 struct produto {
 
-    int id, vazio, saldo, qnt_estoque, estoque_min;
+    int id, vazio, qnt_estoque, estoque_min;
     float valor_venda, valor_custo, lucro;
     char descricao [100];
 
