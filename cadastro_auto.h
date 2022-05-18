@@ -10,18 +10,16 @@ void cadastros(){
     strcpy(id_cpf[aux].cpf, "00688888888");
     strcpy(id_cpf[aux].endereco, "ufmt");
     strcpy(id_cpf[aux].telefone, "6599999999");
-    strcpy(id_cpf[aux].data_cadastro, "16/05/2022");
-
+    strcpy(id_cpf[aux].data_cadastro, "16-05-2022");
     aux++;
 
     id_cpf[aux].id = aux;
     id_cpf[aux].vazio = 1;
     strcpy(id_cpf[aux].nome, "Leo Steffens");
+    strcpy(id_cpf[aux].cpf, "00688888899");
     strcpy(id_cpf[aux].endereco, "ufmt2");
     strcpy(id_cpf[aux].telefone, "6599999889");
     strcpy(id_cpf[aux].data_cadastro, "16/04/2022");
-    strcpy(id_cpf[aux].cpf, "00688888899");
-
     aux++;
 
     id_cpf[aux].id = aux;
