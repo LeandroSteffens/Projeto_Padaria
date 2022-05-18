@@ -197,7 +197,6 @@ void relatorios_apagar(){
     fputs("Nome;CPF;Endereco;Telefone;Data de cadastro", file);
 
     for(int i = 0; i <= 100; i++){
-        printf("chegou aqui:\n %s\n", id_cpf[i].cpf);
         if(id_cpf[i].vazio == 1){
             fprintf(file, "\n""%s"";""%s"";""%s"";""%s"";""%s""", id_cpf[i].nome, id_cpf[i].cpf, id_cpf[i].endereco, id_cpf[i].telefone, id_cpf[i].data_cadastro);
         }
