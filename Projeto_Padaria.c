@@ -140,7 +140,7 @@ int main(){
                 }
         break;
 
-        case 6: 
+        case 6:
          relatorios_apagar();
             main();
         break;
@@ -194,11 +194,11 @@ int verifica_id_produto(int j){
 void relatorios_apagar(){
     FILE *file = fopen("apagar.csv", "w");
 
-    fputs("Nome;CPF;Endereco;Telefone;Data de cadastro", file);
+    fputs("Nome;CPF;Endereco;Telefone;Data de cadastro;Saldo a pagar", file);
 
     for(int i = 0; i <= 100; i++){
         if(id_cpf[i].vazio == 1){
-            fprintf(file, "\n""%s"";""%s"";""%s"";""%s"";""%s""", id_cpf[i].nome, id_cpf[i].cpf, id_cpf[i].endereco, id_cpf[i].telefone, id_cpf[i].data_cadastro);
+            fprintf(file, "\n""%s"";""%s"";""%s"";""%s"";""%s"";""%.2f""", id_cpf[i].nome, id_cpf[i].cpf, id_cpf[i].endereco, id_cpf[i].telefone, id_cpf[i].data_cadastro, id_cpf[i].saldo);
         }
     }
 fclose(file);
