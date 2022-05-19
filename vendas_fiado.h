@@ -22,17 +22,19 @@ int add_vendas_fiado(int id){
     }while (id_vendas_fiado[id].cliente_cpf_ou_cnpj != 1 && id_vendas_fiado[id].cliente_cpf_ou_cnpj != 2);
 
 
-    printf("\n\nClientes cadastrados\n");
-        for (int i=0; i <=100; i++){
-            if (id_vendas_fiado[id].cliente_cpf_ou_cnpj == 1)
-                if (id_cpf[i].vazio == 1)
-                    printf("ID: %i - %s\n", id_cpf[i].id, id_cpf[i].nome);
-            else
-                if (id_cnpj[i].vazio == 1)
-                    printf("ID: %i - %s\n", id_cnpj[i].id, id_cnpj[i].nome);
-        }
-        printf("\nDigite o id do cliente: ");
-        scanf("%i", &id_vendas_fiado[id].id_cliente_venda_fiado);
+    do{
+        printf("\n\nClientes cadastrados\n");
+            for (int i=0; i <=100; i++){
+                if (id_vendas_fiado[id].cliente_cpf_ou_cnpj == 1)
+                    if (id_cpf[i].vazio == 1)
+                        printf("ID: %i - %s\n", id_cpf[i].id, id_cpf[i].nome);
+                else
+                    if (id_cnpj[i].vazio == 1)
+                        printf("ID: %i - %s\n", id_cnpj[i].id, id_cnpj[i].nome);
+            }
+            printf("\nDigite o id do cliente: ");
+            scanf("%i", &id_vendas_fiado[id].id_cliente_venda_fiado);
+    }while ((id_vendas_fiado[id].cliente_cpf_ou_cnpj==1 ? id_cpf[id_vendas_fiado[id].id_cliente_venda_fiado].vazio == 0 : id_cnpj[id_vendas_fiado[id].id_cliente_venda_fiado].vazio == 0));
 
     //mostrando produtos
     printf("\nPRODUTOS CADASTRADOS\n");

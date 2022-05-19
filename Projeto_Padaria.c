@@ -20,13 +20,9 @@ void relatorios_apagar();
 int main(){
 
 
-    int opcao, i, id, aux_id_cpf[100], aux_id_cnpj[100], id_venda_atual = 0;
+    int opcao, i, id, id_venda_atual = 0;
 
-    //zerando vetor
-    for (int i=0; i <= 100; i++){
-        aux_id_cpf[i] = 0;
-        aux_id_cnpj[i] = 0;
-    }
+
     opcao = 0;
 
     printf("Padaria Sr. Manoel");
