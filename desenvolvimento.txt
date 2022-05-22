@@ -1,8 +1,6 @@
-cadastro
-	- cliente
-	- produto
-	- fornecedor
 
-contas a pagar e a receber
-relatorios
-
+	- total a pagar por fornecedor
+	- total a receber por clientew
+	- vendas e lucro por produto
+	- vendas e lucro por forma dee pagamento
+	- estado do estoque 

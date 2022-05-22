@@ -14,7 +14,7 @@
 int verifica_id_cliente_cpf(int j);
 int verifica_id_cliente_cnpj(int j);
 int verifica_id_fornecedor(int j);
-void relatorios_apagar();
+void relatorios_areceber();
 
 
 int main(){
@@ -137,8 +137,33 @@ int main(){
         break;
 
         case 6:
-         relatorios_apagar();
-            main();
+            printf("\nDigite o relatorio desejado");
+            printf("\n(01) - Total a pagar por fornecedor");
+            printf("\n(02) - Total a receber por cliente");
+            printf("\n(03) - Vendas e lucro por produto");
+            printf("\n(04) - Vendas e lucro por forma de pagamento");
+            printf("\n(05) - Estado do estoque");
+            scanf("%i", &opcao);
+
+            switch (opcao)
+            {
+            case 1:
+                
+                break;
+            case 2:
+                relatorios_areceber();
+                main();
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            case 5:
+                break;           
+            default:
+                main();
+                break;
+            }
         break;
 
         case 8:
@@ -187,8 +212,8 @@ int verifica_id_produto(int j){
     return 0;
 }
 
-void relatorios_apagar(){
-    FILE *file = fopen("apagar.csv", "w");
+void relatorios_areceber(){
+    FILE *file = fopen("areceber.csv", "w");
 
     fputs("Nome;CPF;Endereco;Telefone;Data de cadastro;Saldo a pagar", file);
 
