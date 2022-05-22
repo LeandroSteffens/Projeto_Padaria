@@ -349,7 +349,3 @@ void relatorios_estoque(){
 fclose(file);
 
 }
-
-
-           
-

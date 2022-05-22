@@ -11,15 +11,15 @@ int add_fornecedor(int id){
     id_fornecedor[id].id = id;
     id_fornecedor[id].vazio = 1;
     printf("\nDigite o nome do fornecedor: ");
-        scanf("%s", id_fornecedor[id].nome);
+        scanf(" %50[^\n]", id_fornecedor[id].nome);
     printf("\nDigite o endereco do fornecedor: ");
-        scanf("%s", id_fornecedor[id].endereco);
+        scanf(" %100[^\n]", id_fornecedor[id].endereco);
     printf("\nDigite o telefone do fornecedor: ");
-        scanf("%s", id_fornecedor[id].telefone);
+        scanf(" %11[^\n]", id_fornecedor[id].telefone);
     printf("\nDigite o cnpj do fornecedor: ");
-        scanf("%s", id_fornecedor[id].cnpj);
+        scanf(" %11[^\n]", id_fornecedor[id].cnpj);
     printf("\nDigite a inscricao estadual: ");
-        scanf("%s", id_fornecedor[id].ins_est);
+        scanf(" %11[^\n]", id_fornecedor[id].ins_est);
     printf("\nDigite a pessoa de contato: ");
-        scanf("%s", id_fornecedor[id].pessoa_contato);
+        scanf(" %50[^\n]", id_fornecedor[id].pessoa_contato);
 }

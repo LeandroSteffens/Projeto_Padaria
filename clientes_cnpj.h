@@ -12,15 +12,15 @@ int add_cliente_cnpj(int id){
     id_cnpj[id].id = id;
     id_cnpj[id].vazio = 1;
     printf("\nDigite o nome do cliente: ");
-        scanf("%s", id_cnpj[id].nome);
+        scanf(" %50[^\n]", id_cnpj[id].nome);
     printf("\nDigite o endereco do cliente: ");
-        scanf("%s", id_cnpj[id].endereco);
+        scanf(" %100[^\n]", id_cnpj[id].endereco);
     printf("\nDigite o telefone do cliente: ");
-        scanf("%s", id_cnpj[id].telefone);
+        scanf(" %11[^\n]", id_cnpj[id].telefone);
     printf("\nDigite a data do cadastro do cliente: ");
-        scanf("%s", id_cnpj[id].data_cadastro);
+        scanf(" %9[^\n]", id_cnpj[id].data_cadastro);
     printf("\nDigite o cnpj do cliente: ");
-        scanf("%s", id_cnpj[id].cnpj);
+        scanf(" %15[^\n]", id_cnpj[id].cnpj);
     printf("\nDigite a inscricao estadual: ");
-        scanf("%s", id_cnpj[id].ins_est);
+        scanf(" %11[^\n]", id_cnpj[id].ins_est);
 }
