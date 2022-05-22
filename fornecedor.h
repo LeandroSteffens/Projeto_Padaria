@@ -1,6 +1,7 @@
 struct fornecedor {
 
-    int id, vazio, saldo;
+    int id, vazio;
+    float saldo;
     char nome [50], endereco [100], telefone [11], cnpj [11], ins_est[11], pessoa_contato[50];
 
 } id_fornecedor[100];

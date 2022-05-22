@@ -65,5 +65,8 @@ int add_vendas_fiado(int id){
 
     //atualizando estoque
     id_produto[id_vendas_fiado[id].id_produto_vendido].qnt_estoque -= id_vendas_fiado[id].qnt_vendida;
+
+    //atualizando a quantidade vendida por pruduto
+    id_produto[id_vendas_fiado[id].id_produto_vendido].qnt_vendida += id_vendas_fiado[id].qnt_vendida;
 }
 

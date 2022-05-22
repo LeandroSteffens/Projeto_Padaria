@@ -16,7 +16,7 @@ int add_vendas_avista(int id){
     printf("\n(2) - Cheque");
     printf("\n(3) - Cartao de debito");
     printf("\n(4) - Cartao de credito");
-    printf("\n(5) - Ticket alimentacao");
+    printf("\n(5) - Ticket alimentacao\n");
     scanf("%d", &opcao);
 
         switch (opcao)
@@ -37,16 +37,16 @@ int add_vendas_avista(int id){
             break;
         }
     //mostrando produtos
-    for(int i = 0; i <= 100; i++){
-        if(id_produto[i].vazio == 1 && id_produto[i].qnt_estoque >= 1){
+    printf("\nPRODUTOS CADASTRADOS\n");
+    for(int i = 0; i <= 100; i++)
+        if(id_produto[i].vazio == 1 && id_produto[i].qnt_estoque >= 1)
             printf("ID: %i - %s - Valor: RS %.2f  Estoque: %i\n", id_produto[i].id, id_produto[i].descricao, id_produto[i].valor_venda, id_produto[i].qnt_estoque);
-        }
     do{
         printf("\nDigite o codigo do produto: ");
-            scanf("%i", &id_vendas_avista[i].id_produto_vendido);
+            scanf("%i", &id_vendas_avista[id].id_produto_vendido);
         printf("\nDigite quantidade do produto: ");
             scanf("%i", &id_vendas_avista[id].qnt_vendida);
-    } while (id_produto[id_vendas_avista[id].id_produto_vendido].qnt_estoque < id_vendas_avista[i].qnt_vendida);
+    } while (id_produto[id_vendas_avista[id].id_produto_vendido].qnt_estoque < id_vendas_avista[id].qnt_vendida);
 
     //valor da venda
     id_vendas_avista[id].valor_venda =  id_produto[id_vendas_avista[id].id_produto_vendido].valor_venda * id_vendas_avista[id].qnt_vendida;
@@ -55,5 +55,11 @@ int add_vendas_avista(int id){
 
     printf("\nDigite a data da venda: ");
         scanf("%s", id_vendas_avista[id].data_venda);
-    }
+    
+
+    //atualizando estoque
+    id_produto[id_vendas_avista[id].id_produto_vendido].qnt_estoque -= id_vendas_avista[id].qnt_vendida;
+
+    //atualizando a quantidade vendida por pruduto
+    id_produto[id_vendas_avista[id].id_produto_vendido].qnt_vendida += id_vendas_avista[id].qnt_vendida;
 }

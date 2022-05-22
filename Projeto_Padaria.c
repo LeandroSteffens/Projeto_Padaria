@@ -3,6 +3,7 @@
 #include <string.h>
 #include <conio.h>
 #include <ctype.h>
+
 #include "clientes.h"
 #include "clientes_cnpj.h"
 #include "fornecedor.h"
@@ -10,22 +11,26 @@
 #include "vendas_avista.h"
 #include "vendas_fiado.h"
 #include "cadastro_auto.h"
+#include "areceber_fornecedores.h"
 
 int verifica_id_cliente_cpf(int j);
 int verifica_id_cliente_cnpj(int j);
 int verifica_id_fornecedor(int j);
 void relatorios_areceber();
+void relatorios_apagar();
+void relatorios_vendasprod();
+void estoque();
 
 
 int main(){
 
 
-    int opcao, i, id, id_venda_atual = 0;
+    int opcao, i, id, id_venda_atual = 1, id_areceber_fornecedor = 1;
 
 
     opcao = 0;
 
-    printf("Padaria Sr. Manoel");
+    printf("\nPadaria Sr. Manoel");
     printf("\nSelecione uma opcao abaixo:");
     printf("\n(1) - Cadastro de clientes");
     printf("\n(2) - Cadastro de produtos");
@@ -136,33 +141,43 @@ int main(){
                 }
         break;
 
+        case 5:
+            areceber_fornecedor(id_areceber_fornecedor);
+            id_areceber_fornecedor++;
+            main();
+            break;
+
         case 6:
             printf("\nDigite o relatorio desejado");
-            printf("\n(01) - Total a pagar por fornecedor");
-            printf("\n(02) - Total a receber por cliente");
-            printf("\n(03) - Vendas e lucro por produto");
-            printf("\n(04) - Vendas e lucro por forma de pagamento");
-            printf("\n(05) - Estado do estoque");
+            printf("\n(1) - Total a pagar por fornecedor");
+            printf("\n(2) - Total a receber por cliente");
+            printf("\n(3) - Vendas e lucro por produto");
+            printf("\n(4) - Vendas e lucro por forma de pagamento");
+            printf("\n(5) - Estado do estoque\n");
             scanf("%i", &opcao);
 
-            switch (opcao)
-            {
-            case 1:
-                
-                break;
-            case 2:
-                relatorios_areceber();
+            switch (opcao){
+                case 1:
+                    relatorios_apagar();
+                    main();
+                    break;
+                case 2:
+                    relatorios_areceber();
+                    main();
+                    break;
+                case 3:
+                    relatorios_vendasprod();
+                    main();
+                    break;
+                case 4:
+                    break;
+                case 5:
+                estoque();
                 main();
-                break;
-            case 3:
-                break;
-            case 4:
-                break;
-            case 5:
-                break;           
-            default:
-                main();
-                break;
+                    break;           
+                default:
+                    main();
+                    break;
             }
         break;
 
@@ -224,3 +239,50 @@ void relatorios_areceber(){
     }
 fclose(file);
 }
+
+void relatorios_apagar(){
+    FILE *file = fopen("apagar.csv", "w");
+
+    fputs("Nome;CNPJ;Pessoa de contato;Telefone;Valor total a pagar", file);
+
+    for(int i = 0; i <= 100; i++){
+        if(id_fornecedor[i].vazio == 1){
+            fprintf(file, "\n""%s"";""%s"";""%s"";""%s"";""%.2f""", id_fornecedor[i].nome, id_fornecedor[i].cnpj, id_fornecedor[i].pessoa_contato, id_fornecedor[i].telefone, id_fornecedor[i].saldo);
+        }
+    }
+fclose(file);
+}
+
+void relatorios_vendasprod(){
+  FILE *file = fopen("vendasprod.csv", "w");
+
+    fputs("Codigo do produto;Descricao do produto;Receita bruta da venda do produto;Lucro da venda do produto", file);
+
+    for(int i = 0; i<=100; i++){
+        if(id_produto[i].vazio == 1){
+             fprintf(file, "\n""%i"";""%s"";""%.2f"";""%.2f""", id_produto[i].id, id_produto[i].descricao, (id_produto[i].qnt_vendida * id_produto[i].valor_venda), (id_produto[i].qnt_vendida * (id_produto[i].lucro/100)));
+        }
+    }
+fclose(file);
+}
+
+void estoque(){
+    FILE *file = fopen("estoque.csv", "w");
+
+    fputs("Codigo do produto;Descricao do produto;Quantidade em estoque;Observacoes", file);
+
+    for(int i = 0; i<=100; i++){
+        if(id_produto[i].vazio == 1){
+            if(id_produto[i].estoque_min < id_produto[i].qnt_estoque)
+               fprintf(file, "\n""%i"";""%s"";""%i"";""", id_produto[i].id, id_produto[i].descricao, id_produto[i].qnt_estoque);
+            else
+                fprintf(file, "\n""%i"";""%s"";""%i"";""COMPRAR MAIS""", id_produto[i].id, id_produto[i].descricao, id_produto[i].qnt_estoque);
+        }
+    }
+fclose(file);
+
+}
+
+
+           
+
