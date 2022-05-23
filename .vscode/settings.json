@@ -1,5 +1,7 @@
 {
     "files.associations": {
-        "cadastro_auto.h": "c"
+        "cadastro_auto.h": "c",
+        "vendas_avista.h": "c",
+        "fornecedor.h": "c"
     }
 }

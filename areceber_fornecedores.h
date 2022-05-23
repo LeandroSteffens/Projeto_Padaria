@@ -2,14 +2,14 @@
 fornecedor, a data da compra, o tipo de produto comprado e a quantidade. Para simplificar, assuma que
 para cada tipo de produto comprado ´e gerada uma entrada separad*/
 struct compra_fornecedor{
-    char nf[9], data[10];
+    char nf[10], data[11];
     int id_fornecedor, id_produto, qnt_produto, vazio;
     float valor_compra;
 }id_compra_fornecedor[100];
 
 int areceber_fornecedor(int id){
     printf("\nDigite o numero da nota fiscal: ");
-        scanf(" %9[^\n]", id_compra_fornecedor[id].nf);
+        scanf(" %10[^\n]", id_compra_fornecedor[id].nf);
 
     do{
         printf("\n\nFornecedores cadastrados\n");
@@ -49,6 +49,6 @@ int areceber_fornecedor(int id){
     printf("\nValor da compra: RS%.2f", id_compra_fornecedor[id].valor_compra); 
 
     printf("\nDigite a data da compra: ");
-        scanf(" %10[^\n]", id_compra_fornecedor[id].data);   
+        scanf(" %11[^\n]", id_compra_fornecedor[id].data);   
 
 }

@@ -1,21 +1,21 @@
 Codigo do produto;Descricao do produto;Receita bruta da venda do produto;Lucro da venda do produto
 1;Pao frances;0.00;0.00
-2;Pao de forma;0.00;0.00
+2;Pao de forma;6.00;1.00
 3;Pao arabe;0.00;0.00
-4;Pao caseiro;0.00;0.00
-5;Sonho;0.00;0.00
-6;Empada;0.00;0.00
+4;Pao caseiro;4.50;1.50
+5;Sonho;6.00;1.00
+6;Empada;22.50;1.50
 7;Brigadeiro;0.00;0.00
-8;Beijinho;0.00;0.00
+8;Beijinho;4.50;0.50
 9;Risolis;0.00;0.00
 10;Misto quente;0.00;0.00
 11;Cafe;0.00;0.00
-12;Achocolatado;0.00;0.00
+12;Achocolatado;4.50;0.50
 13;Coca cola;0.00;0.00
-14;Guarana;0.00;0.00
-15;Agua mineral;0.00;0.00
-16;Agua com gas;0.00;0.00
-17;Trident;0.00;0.00
-18;Pirulito;0.00;0.00
-19;Queijo mussarela;75.00;2.50
+14;Guarana;21.00;1.00
+15;Agua mineral;45.00;3.00
+16;Agua com gas;81.00;4.50
+17;Trident;12.00;2.00
+18;Pirulito;4.50;3.00
+19;Queijo mussarela;0.00;0.00
 20;Presunto;0.00;0.00

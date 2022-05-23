@@ -10,8 +10,8 @@
 #include "produto.h"
 #include "vendas_avista.h"
 #include "vendas_fiado.h"
-#include "cadastro_auto.h"
 #include "areceber_fornecedores.h"
+#include "cadastro_auto.h"
 
 int verifica_id_cliente_cpf(int j);
 int verifica_id_cliente_cnpj(int j);
@@ -26,7 +26,7 @@ void relatorios_vendaspgto();
 int main(){
 
 
-    int opcao, i, id, id_venda_atual = 1, id_areceber_fornecedor = 1;
+    int opcao, i, id, id_areceber_fornecedor = 16, id_venda_atual = 16, id_cliente_cpf_atual = 10, id_cliente_cnpj_atual = 6, id_fornecedor_atual = 6, id_produto_atual = 21;
 
 
     opcao = 0;
@@ -45,6 +45,7 @@ int main(){
     scanf("%i", &opcao);
     switch (opcao){
 
+        //Cadastro de clientes
         case 1:
             printf("\n(1) - Pessoa fisica");
             printf("\n(2) - Pessoa juridica\n");
@@ -52,72 +53,43 @@ int main(){
 
             switch (opcao){
 
+                //cliente pessoa fisica
                 case 1:
-                    //verificar id do cliente
-                    do{
-                        printf("Digite um id para cadastrar o cliente: ");
-                        scanf("%i", &id);
-                        if (verifica_id_cliente_cpf(id) == 1){
-                            add_cliente_cpf(id);
-                            main();
-                        }
-                        else{
-                            printf("\n\nID NAO DISPONIVEL\n\n");
-                        }
-                    }while (verifica_id_cliente_cpf(id) == 0);
-                break;
+                    add_cliente_cpf(id_cliente_cpf_atual);
+                    id_cliente_cpf_atual++;
+                    main();
+                    break;
 
+                //cliente pessoa juridica
                 case 2:
-            do{
-                    printf("\nDigite um id para cadastrar o cliente: ");
-                    scanf("%i", &id);
-                    if (verifica_id_cliente_cnpj(id) == 1){
-                        add_cliente_cnpj(id);
-                        main();
-                    }
-                    else{
-                        printf("\nID NAO DISPONIVEL\n");
-                    }
-                }while (verifica_id_cliente_cnpj(id) == 0);
+                    add_cliente_cnpj(id_cliente_cnpj_atual);
+                    id_cliente_cnpj_atual++;
+                    main();
+                    break;
 
                 default:
                     printf("\nOpcao invalida\n");
                     main();
                     break;
         break;
-
             }
         break;
 
+        //cadastro de produtos
         case 2:
-                do{
-                    printf("\nDigite um id para cadastrar o produto: ");
-                    scanf("%i", &id);
-                    if (verifica_id_produto(id) == 1){
-                        add_produto(id);
-                        main();
-                    }
-                    else{
-                        printf("\nID NAO DISPONIVEL\n");
-                    }
-                }while (verifica_id_produto(id) == 0);
+            add_produto(id_produto_atual);
+            id_produto_atual++;
+            main();
             break;
 
+        //cadastro de fornecedores
         case 3:
-            do{
-                printf("\nDigite um id para cadastrar o fornecedor: ");
-                scanf("%i", &id);
-                if (verifica_id_fornecedor(id) == 1){
-                    add_fornecedor(id);
-                    printf("\n\nFornecedor CADASTRADO COM SUCESSO\n\n");
-                    main();
-                }
-                else{
-                    printf("\nID NAO DISPONIVEL\n");
-                }
-            }while (verifica_id_fornecedor(id) == 0);
-        break;
+            add_fornecedor(id_fornecedor_atual);
+            id_fornecedor_atual++;
+            main();
+            break;
 
+        //registro de vendas
         case 4:
             printf("\nForma de pagamento fiado?");
             printf("\n(1) - Sim");
@@ -136,18 +108,20 @@ int main(){
                         main();
                         break;
                     default:
-                        printf("Opcao invalida");
+                        printf("\nOpcao invalida\n");
                         main();
                         break;
                 }
-        break;
+            break;
 
+        //registro de compras
         case 5:
             areceber_fornecedor(id_areceber_fornecedor);
             id_areceber_fornecedor++;
             main();
             break;
 
+        //relatorios
         case 6:
             printf("\nDigite o relatorio desejado");
             printf("\n(1) - Total a pagar por fornecedor");
@@ -184,11 +158,13 @@ int main(){
             }
         break;
 
+        //cadastros automaticos
         case 8:
             cadastros();
             main();
         break;
 
+        //sair do programa
         case 9:
             exit(1);
         break;
@@ -197,49 +173,23 @@ int main(){
             main();
         break;
     }
-//free variaveis
-
-
-}
-
-int verifica_id_cliente_cpf(int j){
-
-    if(id_cpf[j].vazio == 0)
-        return 1;
-    return 0;
-}
-
-int verifica_id_cliente_cnpj(int j){
-
-    if(id_cnpj[j].vazio == 0)
-        return 1;
-    return 0;
-}
-
-int verifica_id_fornecedor(int j){
-
-    if(id_fornecedor[j].vazio == 0)
-        return 1;
-    return 0;
-}
-
-int verifica_id_produto(int j){
-
-    if(id_produto[j].vazio == 0)
-        return 1;
-    return 0;
 }
 
 void relatorios_areceber(){
-    FILE *file = fopen("areceber.csv", "w");
+    FILE *file = fopen("areceber.csv", "w");        
 
-    fputs("Nome;CPF;Endereco;Telefone;Data de cadastro;Saldo a pagar", file);
+    fputs("Nome;Tipo de cliente;CPF/CNPJ;Endereco;Telefone;Data de cadastro;Total a receber", file);
 
-    for(int i = 0; i <= 100; i++){
-        if(id_cpf[i].vazio == 1){
-            fprintf(file, "\n""%s"";""%s"";""%s"";""%s"";""%s"";""%.2f""", id_cpf[i].nome, id_cpf[i].cpf, id_cpf[i].endereco, id_cpf[i].telefone, id_cpf[i].data_cadastro, id_cpf[i].saldo);
-        }
-    }
+    //cliente cpf
+    for(int i = 0; i <= 100; i++)
+        if(id_cpf[i].vazio == 1)
+            fprintf(file, "\n""%s"";""CPF"";""%s"";""%s"";""%s"";""%s"";""%.2f""", id_cpf[i].nome, id_cpf[i].cpf, id_cpf[i].endereco, id_cpf[i].telefone, id_cpf[i].data_cadastro, id_cpf[i].saldo);
+
+    //cliente cnpj
+    for(int i = 0; i <= 100; i++)
+        if(id_cnpj[i].vazio == 1)
+            fprintf(file, "\n""%s"";""CNPJ"";""%s"";""%s"";""%s"";""%s"";""%.2f""", id_cnpj[i].nome, id_cnpj[i].cnpj, id_cnpj[i].endereco, id_cnpj[i].telefone, id_cnpj[i].data_cadastro, id_cnpj[i].saldo);
+    
 fclose(file);
 }
 
