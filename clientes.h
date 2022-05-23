@@ -9,10 +9,11 @@ struct cliente_cpf {
 
 int add_cliente_cpf(){
     int i = 1;
+    
     //verificando id
-    while (id_cpf[i].vazio == 1){
+    while (id_cpf[i].vazio == 1)
         i++;
-    }
+    
 
     //recebendo dados do cliente
     id_cpf[i].id = i;

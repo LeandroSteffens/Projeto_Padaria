@@ -7,6 +7,12 @@ struct fornecedor {
 } id_fornecedor[100];
 
 int add_fornecedor(){
+    int id;
+
+    //verificando id
+    while (id_fornecedor[id].vazio == 1)
+        id++;
+
     //recebendo dados do fornecedor
     id_fornecedor[id].id = id;
     id_fornecedor[id].vazio = 1;

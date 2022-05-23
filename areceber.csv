@@ -1,2 +1,17 @@
 Nome;Tipo de cliente;CPF/CNPJ;Endereco;Telefone;Data de cadastro;Total a receber
-lea;CPF;a;a;a;a;0.00
+Cesar Filho;CPF;97179932035;Vila rosa;6596826-5535;16/05/22;6.00
+Leandro Steffens;CPF;00701420090;Boa esperanca;66976756636;04/09/22;10.50
+Gabriela Stefany Ribeiro;CPF;00875444075;Jardim Eldorado;62985638424;03/02/22;30.00
+Daiane Alicia da Conceicao;CPF;67723438753;Parque Cuiaba;6599999999;02/11/22;15.00
+Augusto Bento Brito;CPF;52210654106;Jardim Vitoria;65981023058;06/02/22;112.50
+Sara Tatiane de Paula;CPF;07189604162;Cidade Verde;65996685751;09/05/21;0.00
+Sophia Nair Josefa Almada;CPF;19943608102;Tres Barras;65985184746;08/03/21;0.00
+Marcio Calebe Rodrigues;CPF;65778882130;Pedra 90;65981252437;07/03/20;1.50
+Eloa Sueli da Cruz;CPF;79173442151;Jardim Alvorada;65993158340;06/11/21;15.00
+Tania Mirella Luciana Drumond;CPF;41042432139;Jardim Imperial II;65994624174;05/01/21;12.00
+cesar;CPF;123;12;1;1;0.00
+Escritorios GS;CNPJ;03274447000147;Rua jacaranda, 130, alvorada;65994624174;05/01/22;3.00
+Borracharia dois irmaos;CNPJ;22120023000172;Avenida jose henrique, 1009, centro;65994624174;05/01/21;22.50
+Thomaz e Figueireido S/A;CNPJ;00118628000196;Rua 15, Santa terezinha;65994624174;05/01/21;4.50
+Restaurante coma bem;CNPJ;33732683000120;Jardim Imperial II;65994624174;09/01/21;0.00
+Supermercados boa vida;CNPJ;70530510000156;Rua 10, copahmil;65994624174;05/05/21;4.50

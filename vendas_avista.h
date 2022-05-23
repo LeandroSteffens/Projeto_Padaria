@@ -7,6 +7,12 @@ struct vendas_avista {
 }id_vendas_avista[200];
 
 int add_vendas_avista(){
+    int id;
+
+    //verificando id
+    while (id_vendas_avista[id].vazio == 1)
+        id++;
+        
     //recebendo dados do vendas_avista
     int opcao; char pagamento[30];
     id_vendas_avista[id].id = id;

@@ -7,6 +7,12 @@ struct produto {
 }id_produto[100];
 
 int add_produto(){
+    int id;
+
+    //verificando id
+    while (id_produto[id].vazio == 1)
+        id++;
+
     //recebendo dados do produto
     id_produto[id].id = id;
     id_produto[id].vazio = 1;

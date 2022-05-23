@@ -7,6 +7,12 @@ struct vendas_fiado {
 }id_vendas_fiado[200];
 
 int add_vendas_fiado(){
+    int id;
+
+    //verificando id
+    while (id_vendas_fiado[id].vazio == 1)
+        id++;
+        
 
     //recebendo dados do vendas_fiado
     id_vendas_fiado[id].id = id;

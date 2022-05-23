@@ -8,6 +8,12 @@ struct cliente_cnpj {
 
 
 int add_cliente_cnpj(){
+    int id;
+
+    //verificando id
+    while (id_cnpj[id].vazio == 1)
+        id++;
+        
     //recebendo dados do cliente
     id_cnpj[id].id = id;
     id_cnpj[id].vazio = 1;
