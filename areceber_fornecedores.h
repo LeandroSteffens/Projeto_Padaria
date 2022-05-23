@@ -7,7 +7,7 @@ struct compra_fornecedor{
     float valor_compra;
 }id_compra_fornecedor[100];
 
-int areceber_fornecedor(int id){
+int areceber_fornecedor(){
     printf("\nDigite o numero da nota fiscal: ");
         scanf(" %10[^\n]", id_compra_fornecedor[id].nf);
 

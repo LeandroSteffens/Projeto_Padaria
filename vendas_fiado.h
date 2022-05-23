@@ -6,7 +6,7 @@ struct vendas_fiado {
 
 }id_vendas_fiado[200];
 
-int add_vendas_fiado(int id){
+int add_vendas_fiado(){
 
     //recebendo dados do vendas_fiado
     id_vendas_fiado[id].id = id;

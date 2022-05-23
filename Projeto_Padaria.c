@@ -24,8 +24,7 @@ void relatorios_vendaspgto();
 
 int main(){
 
-
-    int opcao, i, id, id_areceber_fornecedor = 16, id_venda_atual = 16, id_cliente_cpf_atual = 10, id_cliente_cnpj_atual = 6, id_fornecedor_atual = 6, id_produto_atual = 21;
+    int opcao, i, id;
 
 
     opcao = 0;
@@ -54,15 +53,13 @@ int main(){
 
                 //cliente pessoa fisica
                 case 1:
-                    add_cliente_cpf(id_cliente_cpf_atual);
-                    id_cliente_cpf_atual++;
+                    add_cliente_cpf();                    
                     main();
                     break;
 
                 //cliente pessoa juridica
                 case 2:
-                    add_cliente_cnpj(id_cliente_cnpj_atual);
-                    id_cliente_cnpj_atual++;
+                    add_cliente_cnpj();                    
                     main();
                     break;
 
@@ -76,16 +73,13 @@ int main(){
 
         //cadastro de produtos
         case 2:
-            add_produto(id_produto_atual);
-            id_produto_atual++;
+            add_produto();    
             main();
             break;
 
         //cadastro de fornecedores
         case 3:
-            add_fornecedor(id_fornecedor_atual);
-            id_fornecedor_atual++;
-            main();
+            add_fornecedor();
             break;
 
         //registro de vendas
@@ -97,13 +91,11 @@ int main(){
                 switch (opcao){
 
                     case 1:
-                        add_vendas_fiado(id_venda_atual);
-                        id_venda_atual++;
+                        add_vendas_fiado();
                         main();
                         break;
                     case 2:
-                        add_vendas_avista(id_venda_atual);
-                        id_venda_atual++;
+                        add_vendas_avista();
                         main();
                         break;
                     default:
@@ -115,8 +107,7 @@ int main(){
 
         //registro de compras
         case 5:
-            areceber_fornecedor(id_areceber_fornecedor);
-            id_areceber_fornecedor++;
+            areceber_fornecedor();
             main();
             break;
 
@@ -173,6 +164,7 @@ int main(){
         break;
     }
 }
+
 
 void relatorios_areceber(){
     FILE *file = fopen("areceber.csv", "w");        

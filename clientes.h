@@ -7,7 +7,13 @@ struct cliente_cpf {
 } id_cpf[100];
 
 
-int add_cliente_cpf(int i){
+int add_cliente_cpf(){
+    int i = 1;
+    //verificando id
+    while (id_cpf[i].vazio == 1){
+        i++;
+    }
+
     //recebendo dados do cliente
     id_cpf[i].id = i;
     id_cpf[i].vazio = 1;

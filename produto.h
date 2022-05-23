@@ -6,7 +6,7 @@ struct produto {
 
 }id_produto[100];
 
-int add_produto(int id){
+int add_produto(){
     //recebendo dados do produto
     id_produto[id].id = id;
     id_produto[id].vazio = 1;

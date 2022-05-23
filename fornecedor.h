@@ -6,7 +6,7 @@ struct fornecedor {
 
 } id_fornecedor[100];
 
-int add_fornecedor(int id){
+int add_fornecedor(){
     //recebendo dados do fornecedor
     id_fornecedor[id].id = id;
     id_fornecedor[id].vazio = 1;

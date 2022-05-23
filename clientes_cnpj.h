@@ -7,7 +7,7 @@ struct cliente_cnpj {
 } id_cnpj[100];
 
 
-int add_cliente_cnpj(int id){
+int add_cliente_cnpj(){
     //recebendo dados do cliente
     id_cnpj[id].id = id;
     id_cnpj[id].vazio = 1;
