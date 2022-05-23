@@ -19,7 +19,8 @@ int verifica_id_fornecedor(int j);
 void relatorios_areceber();
 void relatorios_apagar();
 void relatorios_vendasprod();
-void estoque();
+void relatorios_estoque();
+void relatorios_vendaspgto();
 
 
 int main(){
@@ -170,10 +171,12 @@ int main(){
                     main();
                     break;
                 case 4:
+                    relatorios_vendaspgto();
+                    main();
                     break;
                 case 5:
-                estoque();
-                main();
+                    relatorios_estoque();
+                    main();
                     break;           
                 default:
                     main();
@@ -254,7 +257,7 @@ fclose(file);
 }
 
 void relatorios_vendasprod(){
-  FILE *file = fopen("vendasprod.csv", "w");
+    FILE *file = fopen("vendasprod.csv", "w");
 
     fputs("Codigo do produto;Descricao do produto;Receita bruta da venda do produto;Lucro da venda do produto", file);
 
@@ -266,7 +269,71 @@ void relatorios_vendasprod(){
 fclose(file);
 }
 
-void estoque(){
+void relatorios_vendaspgto(){
+    FILE *file = fopen("vendaspgto.csv", "w");
+
+    fputs("Modo de pagamento;Receita bruta do modo de pagamento;Lucro desse modo de pagamento", file);
+
+    float bruto = 0, lucro = 0;
+
+    //calculando receita e lucro por meio de pagamento fiado
+    for(int i=0; i<=100; i++)
+        if(id_vendas_fiado[i].vazio == 1){
+            lucro += id_vendas_fiado[i].lucro_venda;
+            bruto += id_vendas_fiado[i].valor_venda;
+        }
+    fprintf(file, "\n""Fiado"";""%.2f"";""%.2f""", bruto, lucro);
+           
+    //calculando receita e lucro por meios de pagamentos a vista  
+        //dinheiro
+        bruto = 0; lucro = 0; 
+        for(int i=0; i<=100; i++)
+            if(id_vendas_avista[i].vazio == 1 && id_vendas_avista[i].id_forma_pagamento == 1){
+                lucro += id_vendas_avista[i].lucro_venda;
+                bruto += id_vendas_avista[i].valor_venda;
+        }
+        fprintf(file, "\n""Dinheiro"";""%.2f"";""%.2f""", bruto, lucro);
+
+        //cheque
+        bruto = 0; lucro = 0; 
+        for(int i=0; i<=100; i++)
+            if(id_vendas_avista[i].vazio == 1 && id_vendas_avista[i].id_forma_pagamento == 2){
+                lucro += id_vendas_avista[i].lucro_venda;
+                bruto += id_vendas_avista[i].valor_venda;
+        }
+        fprintf(file, "\n""Cheque"";""%.2f"";""%.2f""", bruto, lucro);
+        
+        //cartao de debito
+        bruto = 0; lucro = 0; 
+        for(int i=0; i<=100; i++)
+            if(id_vendas_avista[i].vazio == 1 && id_vendas_avista[i].id_forma_pagamento == 3){
+                lucro += id_vendas_avista[i].lucro_venda;
+                bruto += id_vendas_avista[i].valor_venda;
+        }
+        fprintf(file, "\n""Cartao de debito"";""%.2f"";""%.2f""", bruto, lucro);
+
+        //cartao de credito
+        bruto = 0; lucro = 0; 
+        for(int i=0; i<=100; i++)
+            if(id_vendas_avista[i].vazio == 1 && id_vendas_avista[i].id_forma_pagamento == 4){
+                lucro += id_vendas_avista[i].lucro_venda;
+                bruto += id_vendas_avista[i].valor_venda;
+        }
+        fprintf(file, "\n""Cartao de credito"";""%.2f"";""%.2f""", bruto, lucro);
+
+        //ticket alimentacao
+        bruto = 0; lucro = 0; 
+        for(int i=0; i<=100; i++)
+            if(id_vendas_avista[i].vazio == 1 && id_vendas_avista[i].id_forma_pagamento == 5){
+                lucro += id_vendas_avista[i].lucro_venda;
+                bruto += id_vendas_avista[i].valor_venda;
+        }
+        fprintf(file, "\n""Ticket alimentacao"";""%.2f"";""%.2f""", bruto, lucro);
+    
+fclose(file);
+}
+
+void relatorios_estoque(){
     FILE *file = fopen("estoque.csv", "w");
 
     fputs("Codigo do produto;Descricao do produto;Quantidade em estoque;Observacoes", file);

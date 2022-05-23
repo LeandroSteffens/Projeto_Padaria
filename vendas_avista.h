@@ -1,7 +1,7 @@
 struct vendas_avista {
 
-    int id, id_produto_vendido, vazio, qnt_vendida;
-    float valor_venda;
+    int id, id_produto_vendido, vazio, qnt_vendida, id_forma_pagamento;
+    float valor_venda, lucro_venda;
     char data_venda [10], forma_pagamento[20];
 
 }id_vendas_avista[200];
@@ -21,15 +21,25 @@ int add_vendas_avista(int id){
 
         switch (opcao)
         {
-        case 1: strcpy(id_vendas_avista[id].forma_pagamento, "Dinheiro");
+        case 1: 
+            strcpy(id_vendas_avista[id].forma_pagamento, "Dinheiro");
+            id_vendas_avista[id].id_forma_pagamento = 1;
             break;
-        case 2: strcpy(id_vendas_avista[id].forma_pagamento, "Cheque");
+        case 2: 
+            strcpy(id_vendas_avista[id].forma_pagamento, "Cheque");
+            id_vendas_avista[id].id_forma_pagamento = 2;
             break;
-        case 3: strcpy(id_vendas_avista[id].forma_pagamento, "Cartao de debito");
+        case 3:
+            strcpy(id_vendas_avista[id].forma_pagamento, "Cartao de debito");
+            id_vendas_avista[id].id_forma_pagamento = 3;
             break;
-        case 4: strcpy(id_vendas_avista[id].forma_pagamento, "Cartao de credito");
+        case 4: 
+            strcpy(id_vendas_avista[id].forma_pagamento, "Cartao de credito");
+            id_vendas_avista[id].id_forma_pagamento = 4;
             break;
-        case 5: strcpy(id_vendas_avista[id].forma_pagamento, "Ticket alimentacao");
+        case 5: 
+            strcpy(id_vendas_avista[id].forma_pagamento, "Ticket alimentacao");
+            id_vendas_avista[id].id_forma_pagamento = 5;
             break;
         default:
             printf("\nOpcao invalida\n");
@@ -62,4 +72,7 @@ int add_vendas_avista(int id){
 
     //atualizando a quantidade vendida por pruduto
     id_produto[id_vendas_avista[id].id_produto_vendido].qnt_vendida += id_vendas_avista[id].qnt_vendida;
+
+    //atualizando lucro da venda
+    id_vendas_avista[id].lucro_venda = (id_vendas_avista[id].qnt_vendida * (id_produto[id_vendas_avista[id].id_produto_vendido].lucro/100));
 }

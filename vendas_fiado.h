@@ -1,7 +1,7 @@
 struct vendas_fiado {
 
     int id, id_produto_vendido, vazio, qnt_vendida, id_cliente_venda_fiado, cliente_cpf_ou_cnpj;
-    float valor_venda;
+    float valor_venda, lucro_venda;
     char data_venda [10], forma_pagamento[8];
 
 }id_vendas_fiado[200];
@@ -55,7 +55,7 @@ int add_vendas_fiado(int id){
     printf("\n\nValor total = RS %.2f", id_vendas_fiado[id].valor_venda);
 
     printf("\nDigite a data da venda: ");
-        scanf("%s", id_vendas_avista[id].data_venda);
+        scanf("%s", id_vendas_fiado[id].data_venda);
 
     //lancando despesa para o cliente
     if (id_vendas_fiado[id].cliente_cpf_ou_cnpj == 1)
@@ -68,5 +68,8 @@ int add_vendas_fiado(int id){
 
     //atualizando a quantidade vendida por pruduto
     id_produto[id_vendas_fiado[id].id_produto_vendido].qnt_vendida += id_vendas_fiado[id].qnt_vendida;
+
+    //atualizando lucro da venda
+    id_vendas_fiado[id].lucro_venda = (id_vendas_fiado[id].qnt_vendida * (id_produto[id_vendas_fiado[id].id_produto_vendido].lucro/100));
 }
 
