@@ -2,7 +2,7 @@ struct cliente_cpf {
 
     int id, vazio;
     float saldo;
-    char nome [50], cpf [12], endereco [100], telefone[15], data_cadastro [10];
+    char nome [50], cpf [13], endereco [100], telefone[15], data_cadastro [10];
 
 } id_cpf[100];
 
