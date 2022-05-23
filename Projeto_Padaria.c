@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <conio.h>
 #include <ctype.h>
 
 #include "clientes.h"
@@ -213,7 +212,7 @@ void relatorios_vendasprod(){
 
     for(int i = 0; i<=100; i++){
         if(id_produto[i].vazio == 1){
-             fprintf(file, "\n""%i"";""%s"";""%.2f"";""%.2f""", id_produto[i].id, id_produto[i].descricao, (id_produto[i].qnt_vendida * id_produto[i].valor_venda), (id_produto[i].qnt_vendida * (id_produto[i].lucro/100)));
+             fprintf(file, "\n""%i"";""%s"";""%.2f"";""%.2f""", id_produto[i].id, id_produto[i].descricao, (id_produto[i].qnt_vendida * id_produto[i].valor_venda), (id_produto[i].qnt_vendida * (id_produto[i].valor_custo * (id_produto[i].lucro/100))));
         }
     }
 fclose(file);
