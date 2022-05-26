@@ -1,3 +1,9 @@
+/*
+Cesar Augusto de Araujo Filho - RGA: 202021901009
+Leandro Steffens de Oliveira - RGA: 202021901032
+https://github.com/LeandroSteffens/Projeto_Padaria
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
