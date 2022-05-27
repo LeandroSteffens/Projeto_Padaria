@@ -2,7 +2,7 @@ struct fornecedor {
 
     int id, vazio;
     float saldo;
-    char nome [50], endereco [100], telefone [15], cnpj [20], ins_est[12], pessoa_contato[50];
+    char nome [52], endereco [102], telefone [17], cnpj [22], ins_est[14], pessoa_contato[52];
 
 } id_fornecedor[100];
 
@@ -17,15 +17,15 @@ int add_fornecedor(){
     id_fornecedor[id].id = id;
     id_fornecedor[id].vazio = 1;
     printf("\nDigite o nome do fornecedor: ");
-        scanf(" %50[^\n]", id_fornecedor[id].nome);
+        scanf(" %52[^\n]", id_fornecedor[id].nome);
     printf("\nDigite o endereco do fornecedor: ");
-        scanf(" %100[^\n]", id_fornecedor[id].endereco);
+        scanf(" %102[^\n]", id_fornecedor[id].endereco);
     printf("\nDigite o telefone do fornecedor: ");
-        scanf(" %11[^\n]", id_fornecedor[id].telefone);
+        scanf(" %13[^\n]", id_fornecedor[id].telefone);
     printf("\nDigite o cnpj do fornecedor: ");
-        scanf(" %11[^\n]", id_fornecedor[id].cnpj);
+        scanf(" %13[^\n]", id_fornecedor[id].cnpj);
     printf("\nDigite a inscricao estadual: ");
-        scanf(" %11[^\n]", id_fornecedor[id].ins_est);
+        scanf(" %13[^\n]", id_fornecedor[id].ins_est);
     printf("\nDigite a pessoa de contato: ");
-        scanf(" %50[^\n]", id_fornecedor[id].pessoa_contato);
+        scanf(" %52[^\n]", id_fornecedor[id].pessoa_contato);
 }
